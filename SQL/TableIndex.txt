@@ -1,0 +1,178 @@
+Индексация таблиц:
+Соискатели - 1
+Вакансии - 2
+Заявки - 3
+Октклик - 4
+Приказ - 5
+Образование - 6
+ОпытРаботы - 7
+
+//соискатели - 1
+        private void menuTableItems_Click(object sender, RoutedEventArgs e)
+        {
+            menuFilter.Items.Clear();
+            menuFilter.Items.Add(comboBoxElements[0]);
+            menuFilter.Items.Add(comboBoxElements[1]);
+            menuFilter.Items.Add(comboBoxElements[2]);
+            menuFilter.Items.Add(comboBoxElements[3]);
+
+            documentsMenu.Visibility = Visibility.Collapsed;
+            documentsMenu.Items.Clear();
+
+            DatabaseConnection dbConnection = new DatabaseConnection();
+            string query = "SELECT id_соискателя AS ID, фио AS ФИО, пол AS Пол, FORMAT(дата_рождения, 'dd.MM.yyyy') AS 'Дата рождения', телефон AS Телефон FROM Соискатели";
+            LoadData(dbConnection, query);
+            dataGridForm.Columns[0].Visibility = Visibility.Hidden;
+            tableIndex = 1;
+        }
+
+        //вакансии - 2
+        private void menuTableMarks_Click(object sender, RoutedEventArgs e)
+        {
+            menuFilter.Items.Clear();
+            menuFilter.Items.Add(comboBoxElements[0]);
+            menuFilter.Items.Add(comboBoxElements[3]);
+
+            documentsMenu.Visibility = Visibility.Visible;
+            documentsMenu.Items.Clear();
+            documentsMenu.Items.Add(documentElements[1]);
+            documentsMenu.Items.Add(documentElements[3]);
+            documentsMenu.Items.Add(documentElements[4]);
+
+            DatabaseConnection dbConnection = new DatabaseConnection();
+            string query = "SELECT id_вакансии AS ID, " +
+                           "должность AS 'Должность', " +
+                           "опыт AS 'Опыт', " +
+                           "зп AS 'Зарплата', " +
+                           "активность AS 'Активность' " +
+                           "FROM Вакансии";
+            LoadData(dbConnection, query);
+            dataGridForm.Columns[0].Visibility = Visibility.Hidden;
+            tableIndex = 2;
+        }
+
+        //заявки - 3
+        private void menuTableStudent_Click(object sender, RoutedEventArgs e)
+        {
+            menuFilter.Items.Clear();
+            menuFilter.Items.Add(comboBoxElements[0]);
+            menuFilter.Items.Add(comboBoxElements[3]);
+
+            documentsMenu.Visibility = Visibility.Visible;
+            documentsMenu.Items.Clear();
+            documentsMenu.Items.Add(documentElements[6]);
+
+            DatabaseConnection dbConnection = new DatabaseConnection();
+            string query = "SELECT z.id_заявки AS ID, " +
+                           "v.должность AS 'Должность', " +
+                           "s.фио AS 'ФИО соискателя', " +
+                           "z.статус AS 'Статус' " +
+                           "FROM Заявки z " +
+                           "INNER JOIN Соискатели s ON z.id_соискателя = s.id_соискателя " +
+                           "INNER JOIN Вакансии v ON z.id_вакансии = v.id_вакансии";
+            LoadData(dbConnection, query);
+            dataGridForm.Columns[0].Visibility = Visibility.Hidden;
+            tableIndex = 3;
+        }
+
+        //отклик - 4
+        private void menuTableSkip_Click(object sender, RoutedEventArgs e)
+        {
+            menuFilter.Items.Clear();
+            menuFilter.Items.Add(comboBoxElements[0]);
+            menuFilter.Items.Add(comboBoxElements[3]);
+
+            documentsMenu.Visibility = Visibility.Visible;
+            documentsMenu.Items.Clear();
+            documentsMenu.Items.Add(documentElements[2]);
+            documentsMenu.Items.Add(documentElements[3]);
+            documentsMenu.Items.Add(documentElements[4]);
+
+            DatabaseConnection dbConnection = new DatabaseConnection();
+            string query = "SELECT o.id_отклика AS ID, " +
+                           "s.фио AS 'ФИО соискателя', " +
+                           "o.решение AS 'Решение' " +
+                           "FROM Отклик o " +
+                           "INNER JOIN Заявки z ON o.id_заявки = z.id_заявки " +
+                           "INNER JOIN Соискатели s ON z.id_соискателя = s.id_соискателя";
+            LoadData(dbConnection, query);
+            dataGridForm.Columns[0].Visibility = Visibility.Hidden;
+            tableIndex = 4;
+        }
+
+        //приказ - 5
+        private void menuTableLisainces_Click(object sender, RoutedEventArgs e)
+        {
+            menuFilter.Items.Clear();
+            menuFilter.Items.Add(comboBoxElements[0]);
+            menuFilter.Items.Add(comboBoxElements[1]);
+            menuFilter.Items.Add(comboBoxElements[2]);
+            menuFilter.Items.Add(comboBoxElements[3]);
+
+            documentsMenu.Visibility = Visibility.Visible;
+            documentsMenu.Items.Clear();
+            documentsMenu.Items.Add(documentElements[5]);
+
+            DatabaseConnection dbConnection = new DatabaseConnection();
+            string query = "SELECT p.id_приказа AS ID, " +
+                           "s.фио AS 'ФИО соискателя', " +
+                           "FORMAT(p.дата, 'dd.MM.yyyy') AS 'Дата' " +
+                           "FROM Приказ p " +
+                           "INNER JOIN Отклик o ON p.id_отклика = o.id_отклика " +
+                           "INNER JOIN Заявки z ON o.id_заявки = z.id_заявки " +
+                           "INNER JOIN Соискатели s ON z.id_соискателя = s.id_соискателя";
+            LoadData(dbConnection, query);
+            dataGridForm.Columns[0].Visibility = Visibility.Hidden;
+            tableIndex = 5;
+        }
+
+        // Образование - 6
+        private void menuTableParents_Click(object sender, RoutedEventArgs e)
+        {
+            menuFilter.Items.Clear();
+            menuFilter.Items.Add(comboBoxElements[0]);
+            menuFilter.Items.Add(comboBoxElements[1]);
+            menuFilter.Items.Add(comboBoxElements[2]);
+            menuFilter.Items.Add(comboBoxElements[3]);
+
+            documentsMenu.Visibility = Visibility.Collapsed;
+            documentsMenu.Items.Clear();
+            DatabaseConnection dbConnection = new DatabaseConnection();
+            string query = "SELECT o.id_образования AS ID, " +
+                           "s.фио AS 'ФИО соискателя', " +
+                           "o.наименование AS 'Наименование', " +
+                           "o.специальность AS 'Специальность', " +
+                           "FORMAT(o.дата_начала, 'dd.MM.yyyy') AS 'Дата начала', " +
+                           "FORMAT(o.дата_конца, 'dd.MM.yyyy') AS 'Дата конца' " +
+                           "FROM Образование o " +
+                           "INNER JOIN Соискатели s ON o.id_соискателя = s.id_соискателя";
+            LoadData(dbConnection, query);
+            dataGridForm.Columns[0].Visibility = Visibility.Hidden;
+            tableIndex = 6;
+        }
+
+        // Опыт работы - 7
+        private void menuTableEvents_Click(object sender, RoutedEventArgs e)
+        {
+            menuFilter.Items.Clear();
+            menuFilter.Items.Add(comboBoxElements[0]);
+            menuFilter.Items.Add(comboBoxElements[1]);
+            menuFilter.Items.Add(comboBoxElements[2]);
+            menuFilter.Items.Add(comboBoxElements[3]);
+
+            documentsMenu.Visibility = Visibility.Visible;
+            documentsMenu.Items.Clear();
+            documentsMenu.Items.Add(documentElements[0]);
+            DatabaseConnection dbConnection = new DatabaseConnection();
+            string query = "SELECT o.id_опыта_работы AS ID, " +
+                           "s.фио AS 'ФИО соискателя', " +
+                           "o.наименование AS 'Наименование', " +
+                           "o.должность AS 'Должность', " +
+                           "FORMAT(o.дата_начала, 'dd.MM.yyyy') AS 'Дата начала', " +
+                           "FORMAT(o.дата_конца, 'dd.MM.yyyy') AS 'Дата конца' " +
+                           "FROM ОпытРаботы o " +
+                           "INNER JOIN Соискатели s ON o.id_соискателя = s.id_соискателя";
+            LoadData(dbConnection, query);
+            dataGridForm.Columns[0].Visibility = Visibility.Hidden;
+            tableIndex = 7;
+        }

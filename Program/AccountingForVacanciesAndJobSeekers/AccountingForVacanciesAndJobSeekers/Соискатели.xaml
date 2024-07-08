@@ -1,0 +1,19 @@
+﻿<Window x:Class="AccountingForVacanciesAndJobSeekers.Соискатели"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingForVacanciesAndJobSeekers"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Добавление соискателя" Height="400" Width="300" Icon="/MainIcon.png" WindowStartupLocation="CenterScreen" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStyle="ToolWindow" ResizeMode="NoResize" Closed="Window_Closed">
+    <Grid>
+        <Label x:Name="mainLabel" Content="Добавление" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <TextBox MaxLength="50" x:Name="txtName" HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите ФИО соискателя" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtName_PreviewTextInput"/>
+        <ComboBox HorizontalAlignment="Center" x:Name="comboGender" Width="250" materialDesign:HintAssist.Hint="Выберите пол" Style="{StaticResource MaterialDesignComboBox}" Margin="0,139,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="pickerStartDate" HorizontalAlignment="Center" Width="250" Style="{StaticResource MaterialDesignDatePicker}" materialDesign:HintAssist.Hint="Выберите дату рождения"/>
+        <TextBox MaxLength="13" x:Name="txtPhone" HorizontalAlignment="Center" Margin="0,210,0,0" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите телефон" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtPhone_PreviewTextInput"/>
+        <Button x:Name="mainButton" Content="Добавить" HorizontalAlignment="Center" Margin="0,304,0,0" VerticalAlignment="Top" Width="250" Click="mainButton_Click"/>
+        <TextBox MaxLength="50" x:Name="txtLang" HorizontalAlignment="Center" Margin="0,252,0,0" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите знание языка(ов)" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtName_PreviewTextInput"/>
+    </Grid>
+</Window>

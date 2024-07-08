@@ -1,0 +1,19 @@
+﻿<Window x:Class="AccountingForVacanciesAndJobSeekers.Вакансии"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingForVacanciesAndJobSeekers"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Добавление вакансии" Height="450" Width="300" Icon="/MainIcon.png" WindowStartupLocation="CenterScreen" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStyle="ToolWindow" ResizeMode="NoResize" Closed="Window_Closed">
+    <Grid>
+        <Label x:Name="mainLabel" Content="Добавление" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <TextBox MaxLength="50" x:Name="txtPost" HorizontalAlignment="Center" Margin="0,87,0,0" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите должность" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <ComboBox HorizontalAlignment="Center" x:Name="comboActivity" Width="250" materialDesign:HintAssist.Hint="Выберите активность" Style="{StaticResource MaterialDesignComboBox}" Margin="0,244,0,0" VerticalAlignment="Top"/>
+        <TextBox MaxLength="2" x:Name="txtStage" HorizontalAlignment="Center" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите опыт работы в годах" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,142,0,0" PreviewTextInput="txtStage_PreviewTextInput"/>
+        <Button x:Name="mainButton" Content="Добавить" HorizontalAlignment="Center" Margin="0,352,0,0" VerticalAlignment="Top" Width="250" Click="mainButton_Click"/>
+        <TextBox MaxLength="10" x:Name="txtZP" HorizontalAlignment="Center" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите заработную плату" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtZP_PreviewTextInput" Margin="0,192,0,0"/>
+        <ComboBox HorizontalAlignment="Center" x:Name="comboCoic" Width="250" materialDesign:HintAssist.Hint="Выберите вид образования" Style="{StaticResource MaterialDesignComboBox}" Margin="0,284,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

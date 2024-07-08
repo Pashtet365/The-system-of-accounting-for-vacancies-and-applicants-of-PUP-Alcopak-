@@ -1,0 +1,20 @@
+﻿<Window x:Class="AccountingForVacanciesAndJobSeekers.Образование"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingForVacanciesAndJobSeekers"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Добавление образования" Height="450" Width="300" Icon="/MainIcon.png" WindowStartupLocation="CenterScreen" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStyle="ToolWindow" ResizeMode="NoResize" Closed="Window_Closed">
+    <Grid>
+        <Label x:Name="mainLabel" Content="Добавление" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <TextBox MaxLength="50" x:Name="txtName" HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите наименование учреждения" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtName_PreviewTextInput"/>
+        <Button x:Name="mainButton" Content="Добавить" HorizontalAlignment="Center" Margin="0,339,0,0" VerticalAlignment="Top" Width="250" Click="mainButton_Click"/>
+        <ComboBox HorizontalAlignment="Center" x:Name="comboCoic" Width="250" materialDesign:HintAssist.Hint="Выберите соискателя" Style="{StaticResource MaterialDesignComboBox}" Margin="0,80,0,0" VerticalAlignment="Top"/>
+        <TextBox MaxLength="50" x:Name="txtPost" HorizontalAlignment="Center" Margin="0,155,0,0" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите специальность" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtPost_PreviewTextInput"/>
+        <TextBox MaxLength="7" x:Name="txtDiplom" HorizontalAlignment="Center" Margin="0,192,0,0" TextWrapping="NoWrap" materialDesign:HintAssist.Hint="Введите номер диплома" VerticalAlignment="Top" Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtDiplom_PreviewTextInput"/>
+        <ComboBox HorizontalAlignment="Center" x:Name="comboCoic1" Width="250" materialDesign:HintAssist.Hint="Выберите вид образования" Style="{StaticResource MaterialDesignComboBox}" Margin="0,289,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="pickerLastDate" HorizontalAlignment="Center" Width="250" Style="{StaticResource MaterialDesignDatePicker}" materialDesign:HintAssist.Hint="Выберите дату конца" Margin="0,244,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
